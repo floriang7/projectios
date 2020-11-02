@@ -18,7 +18,17 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        //Extra view setup
+        //TODO zet dit in een subclass van UIButton
+        beersButton.layer.cornerRadius = 10
+        beersButton.clipsToBounds = true
+        cocktailsButton.layer.cornerRadius = 10
+        cocktailsButton.clipsToBounds = true
+        favoritsButton.layer.cornerRadius = 10
+        favoritsButton.clipsToBounds = true
+        ratingsButton.layer.cornerRadius = 10
+        ratingsButton.clipsToBounds = true
     }
     
 
