@@ -13,8 +13,9 @@ class BeerTableViewCell: UITableViewCell {
     @IBOutlet var beerView: UIView!
     @IBOutlet var beerImage: UIImageView!
     @IBOutlet var beerTitleLbl: UILabel!
-    @IBOutlet var rateButton: UIButton!
-    @IBOutlet var favoriteButton: UIButton!
+    @IBOutlet var abvLbl: UILabel!
+    @IBOutlet var ratingLbl: UILabel!
+    @IBOutlet var favoritButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

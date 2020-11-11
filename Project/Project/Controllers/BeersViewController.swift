@@ -8,7 +8,7 @@
 import UIKit
 
 class BeersViewController: UIViewController {
-    var beers: [Beer] = []
+    var beers = BeerMapper.getBeersDummyData()
     
     @IBOutlet var beersTableView: UITableView!
     
@@ -24,7 +24,9 @@ class BeersViewController: UIViewController {
             }
         }*/
         
-        beers = BeerMapper().getBeers()
+        
+        
+        
     }
     
     override func viewDidLoad() {
@@ -78,9 +80,16 @@ extension BeersViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = beersTableView.dequeueReusableCell(withIdentifier: "beerCell") as! BeerTableViewCell
         let beer = beers[indexPath.row]
         
-        cell.beerTitleLbl.text = beer.name
         cell.beerImage.image = UIImage(named: "beersample")
-        cell.favoriteButton.imageView?.image = UIImage(named: "star")
+        cell.beerTitleLbl.text = beer.name
+        cell.abvLbl.text = "abv: \(beer.abv)"
+        
+        if beer.rating == nil {
+            cell.ratingLbl.text = "rating:"
+        } else {
+            cell.ratingLbl.text = "rating: \(beer.rating ?? 0)"
+        }
+        cell.favoritButton.imageView?.image = UIImage(named: "star")
         
         return cell
     }

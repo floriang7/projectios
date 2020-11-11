@@ -11,7 +11,7 @@ class HomeViewController: UIViewController {
 
     //OUTLETS
     @IBOutlet var beersButton: UIButton!
-    @IBOutlet var cocktailsButton: UIButton!
+    @IBOutlet var addBeersButton: UIButton!
     @IBOutlet var favoritsButton: UIButton!
     @IBOutlet var ratingsButton: UIButton!
     
@@ -23,8 +23,8 @@ class HomeViewController: UIViewController {
         //TODO zet dit in een subclass van UIButton
         beersButton.layer.cornerRadius = 10
         beersButton.clipsToBounds = true
-        cocktailsButton.layer.cornerRadius = 10
-        cocktailsButton.clipsToBounds = true
+        addBeersButton.layer.cornerRadius = 10
+        addBeersButton.clipsToBounds = true
         favoritsButton.layer.cornerRadius = 10
         favoritsButton.clipsToBounds = true
         ratingsButton.layer.cornerRadius = 10

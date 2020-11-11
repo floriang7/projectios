@@ -11,7 +11,7 @@ import Foundation
 // <SOURCE https://www.youtube.com/watch?v=1en4JyW3XSI&t=607s >
 class APIManager {
     
-    func getBeers(completion: @escaping (Result<[Beer], Error>) -> ()) {
+    func getBeers(completion: @escaping (Result<[BeerAPI], Error>) -> ()) {
         guard let url = URL(string: "http://ontariobeerapi.ca/beers/") else {
             return
         }
@@ -25,7 +25,7 @@ class APIManager {
             
             //succesful
             do {
-                let beers = try JSONDecoder().decode([Beer].self, from: data!)
+                let beers = try JSONDecoder().decode([BeerAPI].self, from: data!)
             //DispatchQueue.main.async {
                 completion(.success(beers))
             //}

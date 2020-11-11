@@ -7,11 +7,14 @@
 
 import UIKit
 
-class CocktailsViewController: UIViewController {
+class AddBeerViewController: UIViewController {
 
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     

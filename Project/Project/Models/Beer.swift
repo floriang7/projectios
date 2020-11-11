@@ -2,37 +2,27 @@
 //  Beer.swift
 //  Project
 //
-//  Created by Florian Goossens on 06/11/2020.
+//  Created by Florian Goossens on 11/11/2020.
 //
 
 import Foundation
 
-struct Beer: Codable {
-    var product_id: Int
+struct Beer {
+    var id: Int
     var name: String
-    var size: String
-    var price: Double
-    var beer_id: Int
-    var image_url: String
-    var category: String
     var abv: Double
-    var style: String
-    var attributes: String
-    var type: String
-    var brewer: String
-    var country: String
-    var on_sale: Bool
+    var rating: Int?
+    var isFavorit: Bool
 }
 
-//sample data until api is fixed
 struct BeerMapper {
-    func getBeers() -> [Beer] {
+    
+    static func getBeersDummyData() -> [Beer] {
         return [
-            Beer(product_id: 1, name: "beer1", size: "25cl", price: 2.50, beer_id: 1, image_url: "", category: "strong beer", abv: 4.50, style: "strong", attributes: "", type: "beer", brewer: "brewer", country: "belgium", on_sale: true),
-            Beer(product_id: 2, name: "beer2", size: "33cl", price: 3.00, beer_id: 2, image_url: "", category: "light beer", abv: 3.00, style: "light", attributes: "", type: "beer", brewer: "brewer", country: "france", on_sale: false),
-            Beer(product_id: 3, name: "beer3", size: "33cl", price: 3.50, beer_id: 3, image_url: "", category: "light beer", abv: 4.00, style: "light", attributes: "", type: "beer", brewer: "brewer", country: "belgium", on_sale: true),
-            Beer(product_id: 4, name: "beer4", size: "25cl", price: 3.50, beer_id: 4, image_url: "", category: "strong beer", abv: 4.00, style: "strong", attributes: "", type: "beer", brewer: "brewer", country: "germany", on_sale: true)
+            Beer(id: 1, name: "Duvel", abv: 4.50, rating: nil, isFavorit: true),
+            Beer(id: 2, name: "Stella", abv: 3.50, rating: 9, isFavorit: true),
+            Beer(id: 3, name: "Heiniken", abv: 3.00, rating: 5, isFavorit: false),
+            Beer(id: 4, name: "Carlsberg", abv: 3.50, rating: 6, isFavorit: false)
         ]
     }
 }
-
