@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		771BB5F8255EB5C800BFDE68 /* BeerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771BB5F7255EB5C800BFDE68 /* BeerRepository.swift */; };
 		77297665255C72D7003A1B33 /* Beer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77297664255C72D7003A1B33 /* Beer.swift */; };
 		774AE96A25598F84005FF74C /* BeerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774AE96925598F84005FF74C /* BeerTableViewCell.swift */; };
 		77739B752555A03400A08B14 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77739B742555A03400A08B14 /* APIManager.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		771BB5F7255EB5C800BFDE68 /* BeerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerRepository.swift; sourceTree = "<group>"; };
 		77297664255C72D7003A1B33 /* Beer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beer.swift; sourceTree = "<group>"; };
 		774AE96925598F84005FF74C /* BeerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerTableViewCell.swift; sourceTree = "<group>"; };
 		77739B742555A03400A08B14 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 			children = (
 				77739B772555AFB700A08B14 /* BeerAPI.swift */,
 				77297664255C72D7003A1B33 /* Beer.swift */,
+				771BB5F7255EB5C800BFDE68 /* BeerRepository.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -210,6 +213,7 @@
 				77F6E6892542F9D600730CA8 /* HomeViewController.swift in Sources */,
 				77F6E6852542F9D600730CA8 /* AppDelegate.swift in Sources */,
 				77C079BA25472E4700F064A0 /* FavoritsViewController.swift in Sources */,
+				771BB5F8255EB5C800BFDE68 /* BeerRepository.swift in Sources */,
 				77F6E6872542F9D600730CA8 /* SceneDelegate.swift in Sources */,
 				774AE96A25598F84005FF74C /* BeerTableViewCell.swift in Sources */,
 			);

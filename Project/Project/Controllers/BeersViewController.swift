@@ -8,7 +8,10 @@
 import UIKit
 
 class BeersViewController: UIViewController {
-    var beers = BeerMapper.getBeersDummyData()
+    
+    var beerRepository = BeerRepository()
+    var beers: [Beer] = []
+    
     
     @IBOutlet var beersTableView: UITableView!
     
@@ -24,7 +27,7 @@ class BeersViewController: UIViewController {
             }
         }*/
         
-        
+        beers = beerRepository.getBeers()
         
         
     }
@@ -83,12 +86,7 @@ extension BeersViewController: UITableViewDataSource, UITableViewDelegate {
         cell.beerImage.image = UIImage(named: "beersample")
         cell.beerTitleLbl.text = beer.name
         cell.abvLbl.text = "abv: \(beer.abv)"
-        
-        if beer.rating == nil {
-            cell.ratingLbl.text = "rating:"
-        } else {
-            cell.ratingLbl.text = "rating: \(beer.rating ?? 0)"
-        }
+        cell.ratingLbl.text = "rating: \(beer.rating)"
         cell.favoritButton.imageView?.image = UIImage(named: "star")
         
         return cell
