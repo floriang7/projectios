@@ -18,24 +18,16 @@ class AddBeerViewController: UIViewController {
     @IBOutlet var addButton: UIButton!
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addButton.layer.cornerRadius = 10
+        updateView()
     }
     
 
     //ACTIONS
     @IBAction func addBeer(_ sender: UIButton) {
-        print("add button tapped")
-        guard let name = nameTextField.text else {
-            return
-        }
-        guard let abv: Double = Double(abvTextField.text!) else {
-            return
-        }
-        guard let rating = Int(ratingTextField.text!) else {
+        guard let name = nameTextField.text, let abv: Double = Double(abvTextField.text!), let rating = Int(ratingTextField.text!) else {
             return
         }
         
@@ -52,6 +44,10 @@ class AddBeerViewController: UIViewController {
     }
     
     //FUNCTIONS
+    fileprivate func updateView() {
+        addButton.layer.cornerRadius = 10
+    }
+    
     func showAlert() {
         
     }
