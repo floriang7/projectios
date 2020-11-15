@@ -26,7 +26,7 @@ class BeersViewController: UIViewController {
             case .failure(let err): print("Failed to fetch beers", err)
             }
         }*/
-        
+        beersTableView.reloadData()
         beers = beerRepository.getBeers()
         
         
@@ -57,21 +57,43 @@ extension BeersViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return beers.count
+        if section == 0 {
+            return beers.count
+        }
+        else {
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = beersTableView.dequeueReusableCell(withIdentifier: "beerCell") as! BeerTableViewCell
+        let cell = beersTableView.dequeueReusableCell(withIdentifier: "beerCell", for: indexPath) as! BeerTableViewCell
         let beer = beers[indexPath.row]
         
-        cell.beerImage.image = UIImage(named: "beersample")
-        cell.beerTitleLbl.text = beer.name
-        cell.abvLbl.text = "abv: \(beer.abv)"
-        cell.ratingLbl.text = "rating: \(beer.rating)"
-        cell.favoritButton.imageView?.image = UIImage(named: "star")
+        cell.update(with: beer)
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let beer = beers[indexPath.row]
+        print(beer.name)
+    }
+    
+    func tableView(_ tableView: UITableView,
+     editingStyleForRowAt indexPath: IndexPath) ->
+     UITableViewCell.EditingStyle {
+     return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit
+    editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath:
+     IndexPath) {
+        if editingStyle == .delete {
+            beers.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: . automatic)
+        }
+    }
+
 }
 
 /*

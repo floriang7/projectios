@@ -24,5 +24,14 @@ class BeerTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
+    func update(with beer:Beer) {
+        beerImage.image = UIImage(named: "beersample")
+        beerTitleLbl.text = beer.name
+        abvLbl.text = "abv: \(beer.abv)"
+        ratingLbl.text = "rating: \(beer.rating)"
+        favoritButton.imageView?.image = UIImage(named: "star")
+        
+    }
 
 }
