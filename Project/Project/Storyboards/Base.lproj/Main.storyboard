@@ -16,103 +16,125 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="qVI-bc-erT">
-                                <rect key="frame" x="97" y="338" width="220" height="220"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xgm-9b-PEp">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="DN3-qL-maV">
-                                        <rect key="frame" x="0.0" y="0.0" width="220" height="100"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9KN-mC-xzU">
+                                        <rect key="frame" x="0.0" y="-140" width="414" height="896"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="krI-sa-0bj">
-                                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                                <color key="backgroundColor" red="0.94117647058823528" green="0.5490196078431373" blue="0.31372549019607843" alpha="1" colorSpace="calibratedRGB"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K6P-cK-gAI">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="qVI-bc-erT">
+                                                        <rect key="frame" x="97" y="338" width="220" height="220"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="DN3-qL-maV">
+                                                                <rect key="frame" x="0.0" y="0.0" width="220" height="100"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="krI-sa-0bj">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                                        <color key="backgroundColor" red="0.94117647058823528" green="0.5490196078431373" blue="0.31372549019607843" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="100" id="3k2-QK-Fqy"/>
+                                                                            <constraint firstAttribute="width" constant="100" id="8du-B8-ZJe"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                                                        <state key="normal" title="Beers">
+                                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </state>
+                                                                        <connections>
+                                                                            <action selector="navigateToNextScreen:" destination="BYZ-38-t0r" eventType="touchUpInside" id="C5f-Mx-GsL"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iA4-Vp-4eS">
+                                                                        <rect key="frame" x="120" y="0.0" width="100" height="100"/>
+                                                                        <color key="backgroundColor" red="0.94117647059999998" green="0.54901960780000003" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="100" id="A4p-Ia-N84"/>
+                                                                            <constraint firstAttribute="height" constant="100" id="Qaa-DM-igE"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                                                        <state key="normal" title="Add Beer">
+                                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </state>
+                                                                        <connections>
+                                                                            <action selector="navigateToNextScreen:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NdQ-0J-Ixj"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="da7-fx-JPS">
+                                                                <rect key="frame" x="0.0" y="120" width="220" height="100"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h12-Xw-RNp">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                                        <color key="backgroundColor" red="0.94117647059999998" green="0.54901960780000003" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="100" id="Dbd-RI-5Qv"/>
+                                                                            <constraint firstAttribute="width" constant="100" id="wpg-9s-rJe"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                                                        <state key="normal" title="Favorits">
+                                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </state>
+                                                                        <connections>
+                                                                            <action selector="navigateToNextScreen:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Cea-aZ-pTn"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ah-E0-iGV">
+                                                                        <rect key="frame" x="120" y="0.0" width="100" height="100"/>
+                                                                        <color key="backgroundColor" red="0.94117647059999998" green="0.54901960780000003" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="100" id="5tF-6m-ocL"/>
+                                                                            <constraint firstAttribute="height" constant="100" id="AY3-9V-Vhu"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                                                        <state key="normal" title="Ratings">
+                                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </state>
+                                                                        <connections>
+                                                                            <action selector="navigateToNextScreen:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IAb-4Z-cj3"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="100" id="3k2-QK-Fqy"/>
-                                                    <constraint firstAttribute="width" constant="100" id="8du-B8-ZJe"/>
+                                                    <constraint firstItem="qVI-bc-erT" firstAttribute="centerX" secondItem="K6P-cK-gAI" secondAttribute="centerX" id="iuE-ky-BIw"/>
+                                                    <constraint firstItem="qVI-bc-erT" firstAttribute="centerY" secondItem="K6P-cK-gAI" secondAttribute="centerY" id="ukI-4U-ExP"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                                <state key="normal" title="Beers">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="navigateToNextScreen:" destination="BYZ-38-t0r" eventType="touchUpInside" id="C5f-Mx-GsL"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iA4-Vp-4eS">
-                                                <rect key="frame" x="120" y="0.0" width="100" height="100"/>
-                                                <color key="backgroundColor" red="0.94117647059999998" green="0.54901960780000003" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="100" id="A4p-Ia-N84"/>
-                                                    <constraint firstAttribute="height" constant="100" id="Qaa-DM-igE"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                                <state key="normal" title="Add Beer">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="navigateToNextScreen:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NdQ-0J-Ixj"/>
-                                                </connections>
-                                            </button>
+                                            </view>
                                         </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="da7-fx-JPS">
-                                        <rect key="frame" x="0.0" y="120" width="220" height="100"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h12-Xw-RNp">
-                                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                                <color key="backgroundColor" red="0.94117647059999998" green="0.54901960780000003" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="100" id="Dbd-RI-5Qv"/>
-                                                    <constraint firstAttribute="width" constant="100" id="wpg-9s-rJe"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                                <state key="normal" title="Favorits">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="navigateToNextScreen:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Cea-aZ-pTn"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ah-E0-iGV">
-                                                <rect key="frame" x="120" y="0.0" width="100" height="100"/>
-                                                <color key="backgroundColor" red="0.94117647059999998" green="0.54901960780000003" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="100" id="5tF-6m-ocL"/>
-                                                    <constraint firstAttribute="height" constant="100" id="AY3-9V-Vhu"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                                <state key="normal" title="Ratings">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="navigateToNextScreen:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IAb-4Z-cj3"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="K6P-cK-gAI" firstAttribute="top" secondItem="9KN-mC-xzU" secondAttribute="top" id="3kf-DH-esY"/>
+                                            <constraint firstItem="K6P-cK-gAI" firstAttribute="leading" secondItem="9KN-mC-xzU" secondAttribute="leading" id="7CC-qW-5Xe"/>
+                                            <constraint firstAttribute="bottom" secondItem="K6P-cK-gAI" secondAttribute="bottom" id="AQx-i3-dJf"/>
+                                            <constraint firstAttribute="trailing" secondItem="K6P-cK-gAI" secondAttribute="trailing" id="gLv-gs-rqy"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
-                            </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RATE YOUR DRINKS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MX0-py-IKc">
-                                <rect key="frame" x="95.5" y="240" width="223.5" height="29"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="9KN-mC-xzU" secondAttribute="trailing" id="Zoh-VN-e8J"/>
+                                    <constraint firstItem="9KN-mC-xzU" firstAttribute="leading" secondItem="H05-BI-5qr" secondAttribute="leading" id="gdU-0j-Utm"/>
+                                    <constraint firstItem="9KN-mC-xzU" firstAttribute="top" secondItem="H05-BI-5qr" secondAttribute="top" id="idC-UZ-Dy7"/>
+                                    <constraint firstAttribute="bottom" secondItem="9KN-mC-xzU" secondAttribute="bottom" id="lbR-NK-ubY"/>
+                                    <constraint firstItem="H05-BI-5qr" firstAttribute="bottom" secondItem="9KN-mC-xzU" secondAttribute="bottom" id="sog-oT-dUi"/>
+                                    <constraint firstItem="H05-BI-5qr" firstAttribute="trailing" secondItem="9KN-mC-xzU" secondAttribute="trailing" id="xH4-I3-nwT"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="4iO-WD-llx"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="H05-BI-5qr"/>
+                            </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.25490196078431371" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="MX0-py-IKc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0J5-XW-erC"/>
-                            <constraint firstItem="MX0-py-IKc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="BN7-Nf-pU4">
-                                <variation key="heightClass=compact-widthClass=regular" constant="30"/>
-                            </constraint>
-                            <constraint firstItem="qVI-bc-erT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="X7L-hP-ILk"/>
-                            <constraint firstItem="qVI-bc-erT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="onB-nH-tT0"/>
+                            <constraint firstItem="Xgm-9b-PEp" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="FE8-ZT-o24"/>
+                            <constraint firstAttribute="width" secondItem="Xgm-9b-PEp" secondAttribute="width" id="Tny-06-ltg"/>
+                            <constraint firstItem="Xgm-9b-PEp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="mTr-iM-h5c"/>
+                            <constraint firstAttribute="bottom" secondItem="Xgm-9b-PEp" secondAttribute="bottom" id="z25-0U-bnd"/>
                         </constraints>
-                        <variation key="heightClass=compact-widthClass=compact">
-                            <mask key="subviews">
-                                <exclude reference="MX0-py-IKc"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="Xgt-HY-X9o"/>
                     <connections>
@@ -138,7 +160,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" placeholder="Search beers" translatesAutoresizingMaskIntoConstraints="NO" id="3vG-mk-CW0">
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search beers" translatesAutoresizingMaskIntoConstraints="NO" id="3vG-mk-CW0">
                                 <rect key="frame" x="0.0" y="140" width="414" height="56"/>
                                 <color key="barTintColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -164,7 +186,7 @@
                                         <rect key="frame" x="202" y="0.0" width="91" height="36"/>
                                         <color key="backgroundColor" red="0.94117647059999998" green="0.54901960780000003" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="Country">
+                                        <state key="normal" title="Abv">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
@@ -172,7 +194,7 @@
                                         <rect key="frame" x="303" y="0.0" width="91" height="36"/>
                                         <color key="backgroundColor" red="0.94117647059999998" green="0.54901960780000003" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="Category">
+                                        <state key="normal" title="Rating">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
@@ -202,29 +224,32 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="wvS-Tc-hmB">
                                                             <rect key="frame" x="182" y="13.5" width="47.5" height="151.5"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Beer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdQ-OV-ei1">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Beer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdQ-OV-ei1">
                                                                     <rect key="frame" x="0.0" y="0.0" width="47.5" height="30.5"/>
                                                                     <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="22"/>
                                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="abv: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ohu-0m-r5l">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="abv: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ohu-0m-r5l">
                                                                     <rect key="frame" x="0.0" y="50.5" width="35" height="19.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="rating:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCJ-K5-qtu">
-                                                                    <rect key="frame" x="0.0" y="90" width="46.5" height="19.5"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rating:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCJ-K5-qtu">
+                                                                    <rect key="frame" x="0.0" y="90" width="47.5" height="19.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="voW-ub-GHr">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="voW-ub-GHr">
                                                                     <rect key="frame" x="0.0" y="129.5" width="22" height="22"/>
                                                                     <state key="normal" image="star" catalog="system"/>
                                                                 </button>
                                                             </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="gdQ-OV-ei1" firstAttribute="centerX" secondItem="NCJ-K5-qtu" secondAttribute="centerX" id="b0G-vu-pkf"/>
+                                                            </constraints>
                                                         </stackView>
                                                     </subviews>
                                                     <constraints>
@@ -257,15 +282,15 @@
                         <viewLayoutGuide key="safeArea" id="dLT-Vw-nDH"/>
                         <color key="backgroundColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="3vG-mk-CW0" firstAttribute="leading" secondItem="dLT-Vw-nDH" secondAttribute="leading" id="1lS-I5-lXs"/>
                             <constraint firstItem="p97-dZ-2GF" firstAttribute="top" secondItem="3vG-mk-CW0" secondAttribute="bottom" constant="36" id="8tR-ll-RVi"/>
-                            <constraint firstItem="3vG-mk-CW0" firstAttribute="leading" secondItem="6SW-ea-waK" secondAttribute="leading" id="KxT-tS-Qw7"/>
                             <constraint firstItem="dLT-Vw-nDH" firstAttribute="bottom" secondItem="Hft-DK-H23" secondAttribute="bottom" id="QLk-ZD-YDH"/>
                             <constraint firstItem="p97-dZ-2GF" firstAttribute="leading" secondItem="dLT-Vw-nDH" secondAttribute="leading" constant="10" id="Wmo-NL-7g7"/>
-                            <constraint firstItem="dLT-Vw-nDH" firstAttribute="trailing" secondItem="Hft-DK-H23" secondAttribute="trailing" id="ZfP-vR-q6U"/>
                             <constraint firstItem="3vG-mk-CW0" firstAttribute="top" secondItem="dLT-Vw-nDH" secondAttribute="top" id="d7N-AB-L4d"/>
                             <constraint firstItem="dLT-Vw-nDH" firstAttribute="trailing" secondItem="p97-dZ-2GF" secondAttribute="trailing" constant="10" id="ejc-Ab-NZY"/>
                             <constraint firstItem="Hft-DK-H23" firstAttribute="leading" secondItem="dLT-Vw-nDH" secondAttribute="leading" id="fSp-v5-HWq"/>
                             <constraint firstItem="Hft-DK-H23" firstAttribute="top" secondItem="p97-dZ-2GF" secondAttribute="bottom" constant="20" id="kXq-Zz-dqP"/>
+                            <constraint firstItem="Hft-DK-H23" firstAttribute="trailing" secondItem="dLT-Vw-nDH" secondAttribute="trailing" id="rqm-pg-vbs"/>
                             <constraint firstItem="dLT-Vw-nDH" firstAttribute="trailing" secondItem="3vG-mk-CW0" secondAttribute="trailing" id="weq-OH-2u1"/>
                         </constraints>
                     </view>
@@ -309,7 +334,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="dxj-MG-Dyg"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Ratings" id="Rvw-cD-UNf"/>
                 </viewController>
@@ -325,7 +350,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="KIq-ap-IJf"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Favorits" id="7ce-ym-cma"/>
                 </viewController>

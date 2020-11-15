@@ -41,28 +41,9 @@ class BeersViewController: UIViewController {
         //beersTableView.showsVerticalScrollIndicator = false
     }
     
-    //<SOURCE https://www.youtube.com/watch?v=esRZCt21TnQ&t=910s, handler wel volledig zelf geïmplementeerd>
-    @IBAction func showRatingAlert(_ sender: UIButton) {
-        let textAlertView = UIAlertController(title: "", message: "Enter a rating between 0 and 10", preferredStyle: .alert)
-        textAlertView.addTextField(configurationHandler: nil)
-        textAlertView.addAction(UIAlertAction(title: "Rate", style: .default, handler: { (_) in
-            let text = textAlertView.textFields![0].text!
-            let rating = Int(text) ?? -1
-            
-            //controle op rating
-            if rating < 0 || rating > 10 {
-                self.present(textAlertView, animated: true, completion: nil)
-            }
-            
-            //TODO correcte waarde
-            
-        }))
-        
-        self.present(textAlertView, animated: true, completion: nil)
-    }
-    //</SOURCE>
+    //ACTIONS
     
-    //functions
+    //FUNCTIONS
     
     
 }// end BeersViewController
