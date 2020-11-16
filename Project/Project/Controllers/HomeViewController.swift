@@ -9,6 +9,8 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    var beers: [Beer] = []
+    
     //OUTLETS
     @IBOutlet var beersButton: UIButton!
     @IBOutlet var addBeersButton: UIButton!
@@ -20,6 +22,28 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         updateView()
+        
+        //if !Beer.loadFromFile().isEmpty {
+        beers = Beer.loadFromFile()
+        //} else {
+        //    beers = Beer.loadSampleBeers()
+        //}
+        
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        switch segue.identifier {
+        case "Beers":
+            let nextViewController = segue.destination as! BeersViewController
+            nextViewController.beers = beers
+        case "Add Beer":
+            let nextViewController = segue.destination as! AddBeerViewController
+            nextViewController.beers = beers
+        default: return
+        }
+        
     }
     
     //ACTIONS
@@ -43,6 +67,8 @@ class HomeViewController: UIViewController {
         ratingsButton.layer.cornerRadius = 10
         ratingsButton.clipsToBounds = true
     }
+    
+    
     
     
 }

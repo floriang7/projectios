@@ -7,7 +7,7 @@
 
 import Foundation
 
-class BeerRepository {
+/*class BeerRepository {
     var beers: [Beer]
     var beerMapper: BeerMapper
     
@@ -24,4 +24,4 @@ class BeerRepository {
         beerMapper.addBeerToDummyData(beer: beer)
     }
     
-}
+}*/

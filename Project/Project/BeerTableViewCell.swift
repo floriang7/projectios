@@ -30,8 +30,7 @@ class BeerTableViewCell: UITableViewCell {
         beerTitleLbl.text = beer.name
         abvLbl.text = "abv: \(beer.abv)"
         ratingLbl.text = "rating: \(beer.rating)"
-        favoritButton.imageView?.image = UIImage(named: "star")
-        
+        favoritButton.imageView?.image = beer.isFavorit ? UIImage(named: "star.fill") : UIImage(named: "star")
     }
 
 }

@@ -9,7 +9,7 @@ import UIKit
 
 class AddBeerViewController: UIViewController {
     
-    var beerMapper = BeerMapper()
+    var beers: [Beer] = []
 
     //OUTLETS
     @IBOutlet var nameTextField: UITextField!
@@ -22,6 +22,7 @@ class AddBeerViewController: UIViewController {
         super.viewDidLoad()
         
         updateView()
+        print(beers)
     }
     
 
@@ -34,10 +35,13 @@ class AddBeerViewController: UIViewController {
         
         let newBeer = Beer(name: name, abv: abv, rating: rating, isFavorit: false)
         
-        beerMapper.addBeerToDummyData(beer: newBeer)
+        beers.append(newBeer)
+        print(beers)
+        Beer.saveToFile(beers: beers)
         
         print("beer \(newBeer.name) added")
         showAlert(titleAlert: "Succes", message: "Beer added", styleAlert: .alert, titleAction: "Ok", styleAction: .default)
+        
         resetTextfFields()
         
         //TODO Segue too HomeVC or BeersVC

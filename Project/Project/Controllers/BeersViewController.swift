@@ -9,7 +9,6 @@ import UIKit
 
 class BeersViewController: UIViewController {
     
-    var beerRepository = BeerRepository()
     var beers: [Beer] = []
     
     
@@ -26,8 +25,8 @@ class BeersViewController: UIViewController {
             case .failure(let err): print("Failed to fetch beers", err)
             }
         }*/
+        beers = Beer.loadFromFile()
         beersTableView.reloadData()
-        beers = beerRepository.getBeers()
         
         
     }
@@ -39,6 +38,9 @@ class BeersViewController: UIViewController {
         beersTableView.dataSource = self
         beersTableView.separatorStyle = .none
         //beersTableView.showsVerticalScrollIndicator = false
+        //beersTableView.rowHeight = UITableView.automaticDimension
+        //beersTableView.estimatedRowHeight = 200
+        print(beers)
     }
     
     //ACTIONS
@@ -91,6 +93,7 @@ extension BeersViewController: UITableViewDataSource, UITableViewDelegate {
         if editingStyle == .delete {
             beers.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: . automatic)
+            Beer.saveToFile(beers: beers)
         }
     }
 
