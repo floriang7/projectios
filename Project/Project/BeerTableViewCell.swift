@@ -16,6 +16,7 @@ class BeerTableViewCell: UITableViewCell {
     @IBOutlet var abvLbl: UILabel!
     @IBOutlet var ratingLbl: UILabel!
     @IBOutlet var favoritButton: UIButton!
+    @IBOutlet var addedOnLbl: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,8 +29,13 @@ class BeerTableViewCell: UITableViewCell {
     func update(with beer:Beer) {
         beerImage.image = UIImage(named: "beersample")
         beerTitleLbl.text = beer.name
-        abvLbl.text = "abv: \(beer.abv)"
-        ratingLbl.text = "rating: \(beer.rating)"
+        abvLbl.text = "Abv (%): \(beer.abv)"
+        ratingLbl.text = "Rating: \(beer.rating)"
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        addedOnLbl.text = "Added on: \(dateFormatter.string(from: beer.dateAdded))"
+        
         favoritButton.imageView?.image = beer.isFavorit ? UIImage(named: "star.fill") : UIImage(named: "star")
     }
 

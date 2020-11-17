@@ -11,20 +11,14 @@ class BeersViewController: UIViewController {
     
     var beers: [Beer] = []
     
-    
     @IBOutlet var beersTableView: UITableView!
+    @IBOutlet var sortAllButton: UIButton!
+    @IBOutlet var sortByAbvButton: UIButton!
+    @IBOutlet var sortByRatingButton: UIButton!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        /*ApiManager().getBeers { (res) in
-            switch res {
-            case .success(let beers): beers.forEach( { (beer) in
-                print(beer.name)
-            })
-            case .failure(let err): print("Failed to fetch beers", err)
-            }
-        }*/
         beers = Beer.loadFromFile()
         beersTableView.reloadData()
         
@@ -40,10 +34,36 @@ class BeersViewController: UIViewController {
         //beersTableView.showsVerticalScrollIndicator = false
         //beersTableView.rowHeight = UITableView.automaticDimension
         //beersTableView.estimatedRowHeight = 200
-        print(beers)
     }
     
     //ACTIONS
+    @IBAction func sortAll(_ sender: Any) {
+        //TODO
+        let allBeers = Beer.loadFromFile()
+        beers = allBeers
+        beersTableView.reloadData()
+    }
+    
+    @IBAction func sortByAbv(_ sender: Any) {
+        //TODO
+        let beersSortedOnAbv = beers.sorted {
+            $0.abv > $1.abv
+        }
+        beers = beersSortedOnAbv
+        beersTableView.reloadData()
+    }
+    
+    @IBAction func sortByRating(_ sender: Any) {
+        let beersSortedOnRating = beers.sorted {
+            $0.rating > $1.rating
+        }
+        beers = beersSortedOnRating
+        beersTableView.reloadData()
+    }
+    
+    @IBAction func favoriteButtonTapped(_ sender: UIButton) {
+        print("favorite button tapped")
+    }
     
     //FUNCTIONS
     
