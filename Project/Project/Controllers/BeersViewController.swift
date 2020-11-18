@@ -62,7 +62,7 @@ class BeersViewController: UIViewController {
     }
     
     @IBAction func favoriteButtonTapped(_ sender: UIButton) {
-        print("favorite button tapped")
+        //TODO
     }
     
     //FUNCTIONS

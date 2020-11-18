@@ -39,9 +39,9 @@ class AddBeerViewController: UIViewController {
         
         print("beer \(newBeer.name) added")
         
-        showAlert(titleAlert: "Succes", message: "Beer added", styleAlert: .actionSheet, titleAction: "Ok", styleAction: .default, sender: sender)
-        
         resetTextfFields()
+        
+        showAlert(titleAlert: "Succes", message: "Beer added", styleAlert: .actionSheet, titleAction: "Ok", styleAction: .default, sender: sender)
         
         //TODO Segue too HomeVC or BeersVC
     }
@@ -49,6 +49,9 @@ class AddBeerViewController: UIViewController {
     //FUNCTIONS
     fileprivate func updateView() {
         addButton.layer.cornerRadius = 10
+        nameTextField.delegate = self
+        abvTextField.delegate = self
+        ratingTextField.delegate = self
     }
     
     
@@ -68,16 +71,12 @@ class AddBeerViewController: UIViewController {
         abvTextField.text = ""
         ratingTextField.text = ""
     }
- 
-    
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+}
+
+extension AddBeerViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
-    */
-
 }
