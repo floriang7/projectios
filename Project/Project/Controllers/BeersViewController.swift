@@ -28,12 +28,7 @@ class BeersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        beersTableView.delegate = self
-        beersTableView.dataSource = self
-        beersTableView.separatorStyle = .none
-        //beersTableView.showsVerticalScrollIndicator = false
-        //beersTableView.rowHeight = UITableView.automaticDimension
-        //beersTableView.estimatedRowHeight = 200
+        initializeTableView()
     }
     
     //ACTIONS
@@ -66,12 +61,21 @@ class BeersViewController: UIViewController {
     }
     
     //FUNCTIONS
+    fileprivate func initializeTableView() {
+        beersTableView.delegate = self
+        beersTableView.dataSource = self
+        beersTableView.separatorStyle = .none
+        beersTableView.cellLayoutMarginsFollowReadableWidth = true
+        //beersTableView.showsVerticalScrollIndicator = false
+        //beersTableView.rowHeight = UITableView.automaticDimension
+        //beersTableView.estimatedRowHeight = 200
+    }
     
     
-}// end BeersViewController
+}// end of BeersViewController
 
 
-// extensions
+// EXTENSIONS
 extension BeersViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -99,6 +103,7 @@ extension BeersViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let beer = beers[indexPath.row]
         print(beer.name)
+        //TODO segue naar detail scherm waar je de rating kan aanpassen
     }
     
     func tableView(_ tableView: UITableView,
@@ -119,12 +124,3 @@ extension BeersViewController: UITableViewDataSource, UITableViewDelegate {
 
 }
 
-/*
-// MARK: - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    // Get the new view controller using segue.destination.
-    // Pass the selected object to the new view controller.
-}
-*/

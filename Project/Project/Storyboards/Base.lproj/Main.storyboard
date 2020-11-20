@@ -145,8 +145,8 @@
                         <outlet property="ratingsButton" destination="9ah-E0-iGV" id="CoB-5Y-U1d"/>
                         <segue destination="YB3-Ss-9ni" kind="show" identifier="Beers" id="U4J-T5-bPT"/>
                         <segue destination="AaU-mC-yrc" kind="show" identifier="Favorits" id="mJj-qD-RGh"/>
-                        <segue destination="9pX-B0-LaJ" kind="show" identifier="Ratings" id="6Mk-Nr-Zfo"/>
                         <segue destination="PSE-Jc-Q5e" kind="show" identifier="Add Beer" id="rdt-BQ-gna"/>
+                        <segue destination="MRn-WC-Xcm" kind="show" identifier="Ratings" id="Y9l-IE-e6p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -357,7 +357,7 @@
         <!--Ratings-->
         <scene sceneID="KTZ-3H-kOr">
             <objects>
-                <viewController id="9pX-B0-LaJ" customClass="RatingsViewController" customModule="Project" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9pX-B0-LaJ" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Bht-7l-eux">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -369,6 +369,51 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cGY-bs-riE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2383" y="922"/>
+        </scene>
+        <!--Ratings-->
+        <scene sceneID="Mpv-cC-rrI">
+            <objects>
+                <tableViewController id="MRn-WC-Xcm" customClass="RatingTableViewController" customModule="Project" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="UXp-Ws-HYh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Rating" textLabel="epu-hm-JOr" detailTextLabel="PZ7-LP-YvS" style="IBUITableViewCellStyleSubtitle" id="buD-W9-556">
+                                <rect key="frame" x="0.0" y="28" width="414" height="70"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="buD-W9-556" id="Bmf-DK-tne">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="epu-hm-JOr">
+                                            <rect key="frame" x="20" y="10" width="47" height="30.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="22"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PZ7-LP-YvS">
+                                            <rect key="frame" x="20" y="40.5" width="56" height="19.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="MRn-WC-Xcm" id="YLZ-ro-0WE"/>
+                            <outlet property="delegate" destination="MRn-WC-Xcm" id="TF3-rV-Cyx"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Ratings" id="VIR-mV-kAE"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aDH-mB-ySK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3232" y="921"/>
         </scene>
         <!--Favorits-->
         <scene sceneID="dYh-iW-j7x">

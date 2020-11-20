@@ -21,15 +21,13 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        updateView()
-        
         //if !Beer.loadFromFile().isEmpty {
         beers = Beer.loadFromFile()
         //} else {
         //    beers = Beer.loadSampleBeers()
         //}
         
-        
+        updateView()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -40,6 +38,9 @@ class HomeViewController: UIViewController {
             nextViewController.beers = beers
         case "Add Beer":
             let nextViewController = segue.destination as! AddBeerViewController
+            nextViewController.beers = beers
+        case "Ratings":
+            let nextViewController = segue.destination as! RatingTableViewController
             nextViewController.beers = beers
         default: return
         }
