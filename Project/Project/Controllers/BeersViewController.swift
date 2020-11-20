@@ -7,44 +7,44 @@
 
 import UIKit
 
-class BeersViewController: UIViewController {
+class BeersViewController: UIViewController, UISearchBarDelegate {
     
     var beers: [Beer] = []
+    var filteredData: [Beer] = []
     
     @IBOutlet var beersTableView: UITableView!
     @IBOutlet var sortAllButton: UIButton!
     @IBOutlet var sortByAbvButton: UIButton!
     @IBOutlet var sortByRatingButton: UIButton!
+    @IBOutlet var searchBar: UISearchBar!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         beers = Beer.loadFromFile()
         beersTableView.reloadData()
-        
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         initializeTableView()
+        filteredData = beers
+        searchBar.delegate = self
     }
     
     //ACTIONS
     @IBAction func sortAll(_ sender: Any) {
-        //TODO
         let allBeers = Beer.loadFromFile()
-        beers = allBeers
+        filteredData = allBeers
         beersTableView.reloadData()
     }
     
     @IBAction func sortByAbv(_ sender: Any) {
-        //TODO
         let beersSortedOnAbv = beers.sorted {
             $0.abv > $1.abv
         }
-        beers = beersSortedOnAbv
+        filteredData = beersSortedOnAbv
         beersTableView.reloadData()
     }
     
@@ -52,7 +52,7 @@ class BeersViewController: UIViewController {
         let beersSortedOnRating = beers.sorted {
             $0.rating > $1.rating
         }
-        beers = beersSortedOnRating
+        filteredData = beersSortedOnRating
         beersTableView.reloadData()
     }
     
@@ -71,6 +71,25 @@ class BeersViewController: UIViewController {
         //beersTableView.estimatedRowHeight = 200
     }
     
+    //<SOURCE https://www.youtube.com/watch?v=iH67DkBx9Jc>
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchText)
+        print(filteredData)
+        if searchText == "" {
+            filteredData = beers
+        } else {
+            filteredData = []
+            for beer in beers {
+                if beer.name.lowercased().contains(searchText.lowercased()) {
+                    filteredData.append(beer)
+                    print("beer into filteredData")
+                }
+            }
+        }
+        beersTableView.reloadData()
+    }
+    //</SOURCE>
+    
     
 }// end of BeersViewController
 
@@ -84,7 +103,7 @@ extension BeersViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return beers.count
+            return filteredData.count
         }
         else {
             return 0
@@ -93,7 +112,7 @@ extension BeersViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = beersTableView.dequeueReusableCell(withIdentifier: "beerCell", for: indexPath) as! BeerTableViewCell
-        let beer = beers[indexPath.row]
+        let beer = filteredData[indexPath.row]
         
         cell.update(with: beer)
         
@@ -101,7 +120,7 @@ extension BeersViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let beer = beers[indexPath.row]
+        let beer = filteredData[indexPath.row]
         print(beer.name)
         //TODO segue naar detail scherm waar je de rating kan aanpassen
     }
