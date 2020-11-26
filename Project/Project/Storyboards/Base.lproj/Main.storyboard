@@ -231,8 +231,8 @@
                                                                 <constraint firstAttribute="width" constant="160" id="eWA-B9-0df"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="wvS-Tc-hmB">
-                                                            <rect key="frame" x="180" y="-6.5" width="194" height="191"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wvS-Tc-hmB">
+                                                            <rect key="frame" x="180" y="13.5" width="194" height="151"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Beer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdQ-OV-ei1">
                                                                     <rect key="frame" x="0.0" y="0.0" width="47.5" height="30.5"/>
@@ -241,25 +241,25 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Abv: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ohu-0m-r5l">
-                                                                    <rect key="frame" x="0.0" y="50.5" width="37" height="19.5"/>
+                                                                    <rect key="frame" x="0.0" y="40.5" width="37" height="19.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCJ-K5-qtu">
-                                                                    <rect key="frame" x="0.0" y="90" width="51" height="19.5"/>
+                                                                    <rect key="frame" x="0.0" y="70" width="51" height="19.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Added on:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syc-OE-rVv">
-                                                                    <rect key="frame" x="0.0" y="129.5" width="74.5" height="19.5"/>
+                                                                    <rect key="frame" x="0.0" y="99.5" width="74.5" height="19.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="voW-ub-GHr">
-                                                                    <rect key="frame" x="0.0" y="169" width="22" height="22"/>
+                                                                    <rect key="frame" x="0.0" y="129" width="22" height="22"/>
                                                                     <state key="normal" image="star" catalog="system"/>
                                                                     <connections>
                                                                         <action selector="favoriteButtonTapped:" destination="YB3-Ss-9ni" eventType="touchUpInside" id="QKh-kA-Z9K"/>
@@ -269,7 +269,6 @@
                                                             <constraints>
                                                                 <constraint firstItem="syc-OE-rVv" firstAttribute="leading" secondItem="wvS-Tc-hmB" secondAttribute="leading" id="9Ew-nv-N0A"/>
                                                                 <constraint firstItem="ohu-0m-r5l" firstAttribute="leading" secondItem="wvS-Tc-hmB" secondAttribute="leading" id="HuX-vn-bGs"/>
-                                                                <constraint firstItem="voW-ub-GHr" firstAttribute="top" secondItem="syc-OE-rVv" secondAttribute="bottom" constant="20" id="RtX-bE-Us4"/>
                                                                 <constraint firstItem="voW-ub-GHr" firstAttribute="leading" secondItem="wvS-Tc-hmB" secondAttribute="leading" id="d01-ZO-hFS"/>
                                                                 <constraint firstItem="NCJ-K5-qtu" firstAttribute="leading" secondItem="wvS-Tc-hmB" secondAttribute="leading" id="hpO-pJ-IVV"/>
                                                             </constraints>
@@ -299,6 +298,7 @@
                                             <outlet property="beerView" destination="Bza-os-BDp" id="N4h-4y-vKy"/>
                                             <outlet property="favoritButton" destination="voW-ub-GHr" id="VWu-Vm-EgS"/>
                                             <outlet property="ratingLbl" destination="NCJ-K5-qtu" id="yeE-S2-nk6"/>
+                                            <segue destination="HTx-0y-1rm" kind="show" identifier="Beer Detail" destinationCreationSelector="showBeerDetails:" id="CK1-Ul-Sq6"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -356,22 +356,6 @@
             <point key="canvasLocation" x="-197.10144927536234" y="79.6875"/>
         </scene>
         <!--Ratings-->
-        <scene sceneID="KTZ-3H-kOr">
-            <objects>
-                <viewController id="9pX-B0-LaJ" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Bht-7l-eux">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="dxj-MG-Dyg"/>
-                        <color key="backgroundColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Ratings" id="Rvw-cD-UNf"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cGY-bs-riE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2383" y="922"/>
-        </scene>
-        <!--Ratings-->
         <scene sceneID="Mpv-cC-rrI">
             <objects>
                 <tableViewController id="MRn-WC-Xcm" customClass="RatingTableViewController" customModule="Project" customModuleProvider="target" sceneMemberID="viewController">
@@ -414,7 +398,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aDH-mB-ySK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3232" y="921"/>
+            <point key="canvasLocation" x="2390" y="921"/>
         </scene>
         <!--Favorits-->
         <scene sceneID="dYh-iW-j7x">
@@ -431,6 +415,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fsE-At-n3a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1670" y="922"/>
+        </scene>
+        <!--Details-->
+        <scene sceneID="Ftd-zw-k96">
+            <objects>
+                <hostingController id="HTx-0y-1rm" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" title="Details" id="2Fe-Ee-dBt"/>
+                </hostingController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s8e-lD-P4b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="245" y="1616"/>
         </scene>
         <!--Add Beer-->
         <scene sceneID="h2y-GW-ePa">
@@ -466,7 +460,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="oDn-Dl-1gd">
                                                 <rect key="frame" x="0.0" y="75.5" width="334" height="65.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Abv" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uwK-W8-xbp">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Abv (%)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uwK-W8-xbp">
                                                         <rect key="frame" x="0.0" y="0.0" width="334" height="21.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class BeersViewController: UIViewController, UISearchBarDelegate {
     
@@ -31,6 +32,7 @@ class BeersViewController: UIViewController, UISearchBarDelegate {
         initializeTableView()
         filteredData = beers
         searchBar.delegate = self
+        searchBar.searchTextField.textColor = .white
     }
     
     //ACTIONS
@@ -59,6 +61,12 @@ class BeersViewController: UIViewController, UISearchBarDelegate {
     @IBAction func favoriteButtonTapped(_ sender: UIButton) {
         //TODO
     }
+    
+    //<SOURCE https://www.youtube.com/watch?v=bJah-pZjJ8A>
+    @IBSegueAction func showBeerDetails(_ coder: NSCoder) -> UIViewController? {
+        return UIHostingController(coder: coder, rootView: BeerDetailView())
+    }
+    //</SOURCE>
     
     //FUNCTIONS
     fileprivate func initializeTableView() {
