@@ -6,8 +6,13 @@
 //
 
 import SwiftUI
+import SafariServices
 
 struct BeerDetailView: View {
+    @State var beer: Beer!
+    let dateFormatter = DateFormatter()
+    
+    
     var body: some View {
             
             ZStack {
@@ -15,19 +20,23 @@ struct BeerDetailView: View {
                     .foregroundColor(Color(red: 70/255, green: 70/255, blue: 65/255))
                     .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                 HStack {
-                    Image("beersample").resizable()
-                        .frame(width: 162.0, height: 162.0)
+                    
+                    VStack {
+                        Image("beersample").resizable()
+                            .frame(width: 162.0, height: 162.0)
+                    }
+                    
                     VStack(alignment: .leading, spacing: 10.0) {
-                        Text("Beer").font(.title)
-                        Text("Abv (%): ...")
-                        Text("Rating: ...")
-                        Text("Added on: ...")
+                        Text("\(beer.name)").font(.title)
+                        Text("Abv (%): \(beer.abv)")
+                        Text("Rating: \(beer.rating)")
+                        Text("Added on: \(showDateString(with: .short, date: beer.dateAdded))")
                         
                         Group {
-                            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                            Button(action: favoriteButtonTapped, label: {
                                 Text("Favorite").padding(5)
                             })
-                            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                            Button(action: changeRatingButtonTapped, label: {
                                 Text("Change rating").padding(5)
                             })
                         }.foregroundColor(.white)
@@ -41,6 +50,21 @@ struct BeerDetailView: View {
                 .cornerRadius(10)
         }
     }
+    
+    //FUNCTIONS
+    func favoriteButtonTapped() {
+        print("favorite")
+    }
+    
+    func changeRatingButtonTapped() {
+        print("change rating")
+    }
+    
+    func showDateString(with style: DateFormatter.Style, date: Date) -> String {
+        dateFormatter.dateStyle = style
+        return dateFormatter.string(from: date)
+    }
+    
 }
 
 struct BeerDetailView_Previews: PreviewProvider {

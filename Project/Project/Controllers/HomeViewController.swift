@@ -21,11 +21,8 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //if !Beer.loadFromFile().isEmpty {
+        //TODO empty check?
         beers = Beer.loadFromFile()
-        //} else {
-        //    beers = Beer.loadSampleBeers()
-        //}
         
         updateView()
     }

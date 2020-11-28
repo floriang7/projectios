@@ -12,6 +12,7 @@ class BeersViewController: UIViewController, UISearchBarDelegate {
     
     var beers: [Beer] = []
     var filteredData: [Beer] = []
+    var selecectedBeer: Beer? = nil
     
     @IBOutlet var beersTableView: UITableView!
     @IBOutlet var sortAllButton: UIButton!
@@ -64,9 +65,12 @@ class BeersViewController: UIViewController, UISearchBarDelegate {
     
     //<SOURCE https://www.youtube.com/watch?v=bJah-pZjJ8A>
     @IBSegueAction func showBeerDetails(_ coder: NSCoder) -> UIViewController? {
-        return UIHostingController(coder: coder, rootView: BeerDetailView())
+        print("segueaction started")
+        let hostingController = UIHostingController(coder: coder, rootView: BeerDetailView(beer: selecectedBeer))
+        return hostingController
     }
     //</SOURCE>
+    
     
     //FUNCTIONS
     fileprivate func initializeTableView() {
@@ -90,7 +94,6 @@ class BeersViewController: UIViewController, UISearchBarDelegate {
             for beer in beers {
                 if beer.name.lowercased().contains(searchText.lowercased()) {
                     filteredData.append(beer)
-                    print("beer into filteredData")
                 }
             }
         }
@@ -127,10 +130,18 @@ extension BeersViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    /*func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let beer = filteredData[indexPath.row]
-        print(beer.name)
-        //TODO segue naar detail scherm waar je de rating kan aanpassen
+        selecectedBeer = beer
+        print("selected beer: \(selecectedBeer?.name ?? "nil")")        
+        
+    }*/
+    
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        let beer = filteredData[indexPath.row]
+        selecectedBeer = beer
+        print("selected beer: \(selecectedBeer?.name ?? "")")
+        return indexPath
     }
     
     func tableView(_ tableView: UITableView,
