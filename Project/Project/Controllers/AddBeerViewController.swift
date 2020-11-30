@@ -21,7 +21,7 @@ class AddBeerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        updateView()
+        updateUI()
     }
     
 
@@ -35,19 +35,17 @@ class AddBeerViewController: UIViewController {
         let newBeer = Beer(name: name, abv: abv, rating: rating, isFavorit: false)
         
         beers.append(newBeer)
-        Beer.saveToFile(beers: beers)
-        
-        print("beer \(newBeer.name) added")
+        BeerController.saveToFile(beers: beers)
         
         resetTextfFields()
         
-        showAlert(titleAlert: "Succes", message: "Beer added", styleAlert: .actionSheet, titleAction: "Ok", styleAction: .default, sender: sender)
+        showAlert(titleAlert: "Succes", message: "\(newBeer.name) added", styleAlert: .actionSheet, titleAction: "Ok", styleAction: .default, sender: sender)
         
-        //TODO Segue too HomeVC or BeersVC
+        //TODO Segue too HomeVC
     }
     
     //FUNCTIONS
-    fileprivate func updateView() {
+    fileprivate func updateUI() {
         addButton.layer.cornerRadius = 10
         nameTextField.delegate = self
         abvTextField.delegate = self

@@ -23,7 +23,7 @@ class BeersViewController: UIViewController, UISearchBarDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        beers = Beer.loadFromFile()
+        beers = BeerController.loadFromFile()
         beersTableView.reloadData()
     }
     
@@ -38,7 +38,7 @@ class BeersViewController: UIViewController, UISearchBarDelegate {
     
     //ACTIONS
     @IBAction func sortAll(_ sender: Any) {
-        let allBeers = Beer.loadFromFile()
+        let allBeers = BeerController.loadFromFile()
         filteredData = allBeers
         beersTableView.reloadData()
     }
@@ -85,8 +85,6 @@ class BeersViewController: UIViewController, UISearchBarDelegate {
     
     //<SOURCE https://www.youtube.com/watch?v=iH67DkBx9Jc>
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchText)
-        print(filteredData)
         if searchText == "" {
             filteredData = beers
         } else {
@@ -156,7 +154,7 @@ extension BeersViewController: UITableViewDataSource, UITableViewDelegate {
         if editingStyle == .delete {
             beers.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: . automatic)
-            Beer.saveToFile(beers: beers)
+            BeerController.saveToFile(beers: beers)
         }
     }
 

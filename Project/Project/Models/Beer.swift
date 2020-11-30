@@ -14,6 +14,7 @@ struct Beer: Codable {
     var rating: Int
     var isFavorit: Bool
     var dateAdded: Date
+    
     static let archiveUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("beers").appendingPathExtension("plist")
   
   
@@ -25,7 +26,7 @@ struct Beer: Codable {
         self.dateAdded = Date()
     }
     
-    static func saveToFile(beers: [Beer]) {
+    /*static func saveToFile(beers: [Beer]) {
         let propertyListEncoder = PropertyListEncoder()
         let encodedBeers = try? propertyListEncoder.encode(beers)
         
@@ -44,38 +45,16 @@ struct Beer: Codable {
         }
 
         return beers
-    }
+    }*/
     
-    static func loadSampleBeers() -> [Beer] {
+    /*static func loadSampleBeers() -> [Beer] {
         	return [
                 Beer(name: "Duvel", abv: 4.50, rating: 8, isFavorit: true),
                 Beer(name: "Stella", abv: 3.50, rating: 9, isFavorit: true),
                 Beer(name: "Heiniken", abv: 3.00, rating: 5, isFavorit: false),
                 Beer(name: "Carlsberg", abv: 3.50, rating: 6, isFavorit: false)
             ]
-    }
+    }*/
 
 }
 
-/*struct BeerMapper {
-    
-    var beers: [Beer]
-    
-    init() {
-        self.beers = [
-            Beer(name: "Duvel", abv: 4.50, rating: 8, isFavorit: true),
-            Beer(name: "Stella", abv: 3.50, rating: 9, isFavorit: true),
-            Beer(name: "Heiniken", abv: 3.00, rating: 5, isFavorit: false),
-            Beer(name: "Carlsberg", abv: 3.50, rating: 6, isFavorit: false)
-        ]
-    }
-    
-    
-    func getBeersDummyData() -> [Beer] {
-        return self.beers
-    }
-    
-    mutating func addBeerToDummyData(beer: Beer) {
-        self.beers.append(beer)
-    }
-}*/

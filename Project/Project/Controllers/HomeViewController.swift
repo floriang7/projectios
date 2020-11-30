@@ -22,9 +22,9 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         //TODO empty check?
-        beers = Beer.loadFromFile()
+        beers = BeerController.loadFromFile()
         
-        updateView()
+        updateUI()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -54,7 +54,7 @@ class HomeViewController: UIViewController {
     }
     
     //FUNCTIONS
-    fileprivate func updateView() {
+    fileprivate func updateUI() {
         //TODO zet dit in een subclass van UIButton
         beersButton.layer.cornerRadius = 10
         beersButton.clipsToBounds = true

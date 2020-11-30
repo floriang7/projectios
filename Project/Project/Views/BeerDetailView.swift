@@ -12,7 +12,6 @@ struct BeerDetailView: View {
     @State var beer: Beer!
     let dateFormatter = DateFormatter()
     
-    
     var body: some View {
             
             ZStack {
@@ -27,14 +26,14 @@ struct BeerDetailView: View {
                     }
                     
                     VStack(alignment: .leading, spacing: 10.0) {
-                        Text("\(beer.name)").font(.title)
-                        Text("Abv (%): \(beer.abv)")
+                        Text("\(beer.name)").font(.custom("Avenir Next", size: 22)).fontWeight(.semibold)
+                        Text("Abv (%): \(String(format: "%.2f", beer.abv))")
                         Text("Rating: \(beer.rating)")
                         Text("Added on: \(showDateString(with: .short, date: beer.dateAdded))")
                         
                         Group {
                             Button(action: favoriteButtonTapped, label: {
-                                Text("Favorite").padding(5)
+                                Text(beer.isFavorit ? "Unfavorite" : "Favorite").padding(5)
                             })
                             Button(action: changeRatingButtonTapped, label: {
                                 Text("Change rating").padding(5)
@@ -53,11 +52,29 @@ struct BeerDetailView: View {
     
     //FUNCTIONS
     func favoriteButtonTapped() {
-        print("favorite")
+        print(beer.isFavorit)
+        beer.isFavorit = !beer.isFavorit
+        print(beer.isFavorit)
     }
     
     func changeRatingButtonTapped() {
-        print("change rating")
+        let alert = UIAlertController(title: "Change Rating", message: "", preferredStyle: .alert)
+        alert.addTextField { textfield in
+            textfield.placeholder = "0-10"
+        }
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { _ in
+            let textfield = alert.textFields![0]
+            guard let rating = Int(textfield.text!) else {
+                UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
+                return
+            }
+            print(rating)
+            self.beer.rating = rating
+            //TODO opslaan in files
+        }))
+        
+        UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
     }
     
     func showDateString(with style: DateFormatter.Style, date: Date) -> String {
