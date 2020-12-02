@@ -12,7 +12,7 @@ class BeersViewController: UIViewController, UISearchBarDelegate {
     
     var beers: [Beer] = []
     var filteredData: [Beer] = []
-    var selecectedBeer: Beer? = nil
+    var selectedBeer: Beer? = nil
     
     @IBOutlet var beersTableView: UITableView!
     @IBOutlet var sortAllButton: UIButton!
@@ -24,22 +24,20 @@ class BeersViewController: UIViewController, UISearchBarDelegate {
         super.viewWillAppear(animated)
         
         beers = BeerController.loadFromFile()
-        beersTableView.reloadData()
+        filteredData = beers
+        beersTableView.reloadData() 
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         initializeTableView()
-        filteredData = beers
-        searchBar.delegate = self
-        searchBar.searchTextField.textColor = .white
+        initializeSearchBar()
     }
     
     //ACTIONS
     @IBAction func sortAll(_ sender: Any) {
-        let allBeers = BeerController.loadFromFile()
-        filteredData = allBeers
+        filteredData = beers
         beersTableView.reloadData()
     }
     
@@ -65,8 +63,11 @@ class BeersViewController: UIViewController, UISearchBarDelegate {
     
     //<SOURCE https://www.youtube.com/watch?v=bJah-pZjJ8A>
     @IBSegueAction func showBeerDetails(_ coder: NSCoder) -> UIViewController? {
-        print("segueaction started")
-        let hostingController = UIHostingController(coder: coder, rootView: BeerDetailView(beer: selecectedBeer))
+        let selectedIndex = beers.firstIndex { (beer: Beer) -> Bool in
+            return beer.name.lowercased() == selectedBeer?.name.lowercased()
+        }
+        print(selectedIndex!)
+        let hostingController = UIHostingController(coder: coder, rootView: BeerDetailView(beers: self.beers, selectedBeerIndex: selectedIndex!))
         return hostingController
     }
     //</SOURCE>
@@ -79,8 +80,11 @@ class BeersViewController: UIViewController, UISearchBarDelegate {
         beersTableView.separatorStyle = .none
         beersTableView.cellLayoutMarginsFollowReadableWidth = true
         //beersTableView.showsVerticalScrollIndicator = false
-        //beersTableView.rowHeight = UITableView.automaticDimension
-        //beersTableView.estimatedRowHeight = 200
+    }
+    
+    fileprivate func initializeSearchBar() {
+        searchBar.delegate = self
+        searchBar.searchTextField.textColor = .white
     }
     
     //<SOURCE https://www.youtube.com/watch?v=iH67DkBx9Jc>
@@ -123,7 +127,7 @@ extension BeersViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = beersTableView.dequeueReusableCell(withIdentifier: "beerCell", for: indexPath) as! BeerTableViewCell
         let beer = filteredData[indexPath.row]
         
-        cell.update(with: beer)
+        cell.updateView(with: beer)
         
         return cell
     }
@@ -137,8 +141,8 @@ extension BeersViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         let beer = filteredData[indexPath.row]
-        selecectedBeer = beer
-        print("selected beer: \(selecectedBeer?.name ?? "")")
+        selectedBeer = beer
+        print("selected beer: \(selectedBeer?.name ?? "")")
         return indexPath
     }
     

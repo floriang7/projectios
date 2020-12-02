@@ -26,7 +26,8 @@ class BeerTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func update(with beer:Beer) {
+    
+    func updateView(with beer:Beer) {
         beerImage.image = UIImage(named: "beersample")
         beerTitleLbl.text = beer.name
         abvLbl.text = "Abv (%): \(beer.abv)"
@@ -36,6 +37,7 @@ class BeerTableViewCell: UITableViewCell {
         dateFormatter.dateStyle = .short
         addedOnLbl.text = "Added on: \(dateFormatter.string(from: beer.dateAdded))"
         
+        //TODO dit werkt nog niet
         favoritButton.imageView?.image = beer.isFavorit ? UIImage(named: "star.fill") : UIImage(named: "star")
     }
 

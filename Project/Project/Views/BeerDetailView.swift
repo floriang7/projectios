@@ -9,9 +9,11 @@ import SwiftUI
 import SafariServices
 
 struct BeerDetailView: View {
-    @State var beer: Beer!
+    @State var beers: [Beer] = []
+    var selectedBeerIndex: Int!
+    //@State var beer: Beer!
     let dateFormatter = DateFormatter()
-    
+      
     var body: some View {
             
             ZStack {
@@ -26,14 +28,14 @@ struct BeerDetailView: View {
                     }
                     
                     VStack(alignment: .leading, spacing: 10.0) {
-                        Text("\(beer.name)").font(.custom("Avenir Next", size: 22)).fontWeight(.semibold)
-                        Text("Abv (%): \(String(format: "%.2f", beer.abv))")
-                        Text("Rating: \(beer.rating)")
-                        Text("Added on: \(showDateString(with: .short, date: beer.dateAdded))")
+                        Text("\(beers[selectedBeerIndex].name)").font(.custom("Avenir Next", size: 22)).fontWeight(.semibold)
+                        Text("Abv (%): \(String(format: "%.2f", beers[selectedBeerIndex].abv))")
+                        Text("Rating: \(beers[selectedBeerIndex].rating)")
+                        Text("Added on: \(showDateString(with: .short, date: beers[selectedBeerIndex].dateAdded))")
                         
                         Group {
                             Button(action: favoriteButtonTapped, label: {
-                                Text(beer.isFavorit ? "Unfavorite" : "Favorite").padding(5)
+                                Text(beers[selectedBeerIndex].isFavorit ? "Unfavorite" : "Favorite").padding(5)
                             })
                             Button(action: changeRatingButtonTapped, label: {
                                 Text("Change rating").padding(5)
@@ -52,9 +54,8 @@ struct BeerDetailView: View {
     
     //FUNCTIONS
     func favoriteButtonTapped() {
-        print(beer.isFavorit)
-        beer.isFavorit = !beer.isFavorit
-        print(beer.isFavorit)
+        beers[selectedBeerIndex].isFavorit = !beers[selectedBeerIndex].isFavorit
+        BeerController.saveToFile(beers: beers)
     }
     
     func changeRatingButtonTapped() {
@@ -70,8 +71,11 @@ struct BeerDetailView: View {
                 return
             }
             print(rating)
-            self.beer.rating = rating
+            beers[selectedBeerIndex].rating = rating
+            
             //TODO opslaan in files
+            BeerController.saveToFile(beers: beers)
+            print("beers saved")
         }))
         
         UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
@@ -81,6 +85,7 @@ struct BeerDetailView: View {
         dateFormatter.dateStyle = style
         return dateFormatter.string(from: date)
     }
+    
     
 }
 
