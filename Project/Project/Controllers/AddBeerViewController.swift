@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddBeerViewController: UIViewController {
+class AddBeerViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var beers: [Beer] = []
 
@@ -16,6 +16,7 @@ class AddBeerViewController: UIViewController {
     @IBOutlet var abvTextField: UITextField!
     @IBOutlet var ratingTextField: UITextField!
     @IBOutlet var addButton: UIButton!
+    @IBOutlet var beerImageView: UIImageView!
     
     
     override func viewDidLoad() {
@@ -27,11 +28,11 @@ class AddBeerViewController: UIViewController {
 
     //ACTIONS
     @IBAction func addBeer(_ sender: UIButton) {
-        guard let name = nameTextField.text, let abv: Double = Double(abvTextField.text!), let rating = Int(ratingTextField.text!) else {
+        guard let name = nameTextField.text, let abv: Double = Double(abvTextField.text!), let rating = Int(ratingTextField.text!), let beerImage: UIImage = beerImageView.image else {
             showAlert(titleAlert: "Error", message: "Couldn't add the beer, check your input!", styleAlert: .alert, titleAction: "Ok", styleAction: .default, sender: sender)
             return
         }
-        
+        //TODO beerimage aan constructor toevoegen in Beer struct
         let newBeer = Beer(name: name, abv: abv, rating: rating, isFavorit: false)
         
         beers.append(newBeer)
@@ -44,12 +45,55 @@ class AddBeerViewController: UIViewController {
         //TODO Segue too HomeVC
     }
     
+    @IBAction func cameraButtonTapped(_ sender: UIButton) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        
+        let alertController = UIAlertController(title: "Choose image source", message: nil, preferredStyle: .actionSheet)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        alertController.addAction(cancelAction)
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let cameraAction = UIAlertAction(title: "Camera", style: .default) { action in
+                print("camera selected")
+                imagePicker.sourceType = .camera
+                self.present(imagePicker, animated: true, completion: nil)
+            }
+            alertController.addAction(cameraAction)
+        } else {
+            print("camera not available")
+        }
+          
+        //alertController.popoverPresentationController?.sourceView = sender
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    @IBAction func defaultImageButtonTapped(_ sender: UIButton) {
+        beerImageView.image = UIImage(named: "beersample")
+        beerImageView.isHidden = false
+    }
+    
+    
+    
     //FUNCTIONS
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let selectedImage = info[.originalImage] as? UIImage else {return}
+        beerImageView.image = selectedImage
+        beerImageView.isHidden = false
+        dismiss(animated: true, completion: nil)
+    }
+    
     fileprivate func updateUI() {
         addButton.layer.cornerRadius = 10
         nameTextField.delegate = self
         abvTextField.delegate = self
         ratingTextField.delegate = self
+        
+        if beerImageView.image == nil {
+            beerImageView.isHidden = true
+        }
     }
     
     

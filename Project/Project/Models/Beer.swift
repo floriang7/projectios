@@ -6,6 +6,9 @@
 //
 
 import Foundation
+import UIKit
+
+//TODO image property toevoegen, defenitie voor codable voorzien (door UIImage)
 
 struct Beer: Codable {
     //var id: Int
@@ -14,8 +17,8 @@ struct Beer: Codable {
     var rating: Int
     var isFavorit: Bool
     var dateAdded: Date
+    //var image: UIImage
     
-    static let archiveUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("beers").appendingPathExtension("plist")
   
   
     init(name: String, abv: Double, rating: Int, isFavorit: Bool) {
