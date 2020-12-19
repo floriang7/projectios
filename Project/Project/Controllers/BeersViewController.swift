@@ -25,7 +25,7 @@ class BeersViewController: UIViewController, UISearchBarDelegate {
         
         beers = BeerController.loadFromFile()
         filteredData = beers
-        beersTableView.reloadData() 
+        beersTableView.reloadData()
     }
     
     override func viewDidLoad() {

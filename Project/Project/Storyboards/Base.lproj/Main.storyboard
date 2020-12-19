@@ -232,7 +232,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wvS-Tc-hmB">
-                                                            <rect key="frame" x="180" y="13.5" width="194" height="151"/>
+                                                            <rect key="frame" x="180" y="7.5" width="194" height="163"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Beer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdQ-OV-ei1">
                                                                     <rect key="frame" x="0.0" y="0.0" width="47.5" height="30.5"/>
@@ -259,8 +259,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="voW-ub-GHr">
-                                                                    <rect key="frame" x="0.0" y="129" width="22" height="22"/>
-                                                                    <state key="normal" image="star" catalog="system"/>
+                                                                    <rect key="frame" x="0.0" y="129" width="30" height="34"/>
                                                                     <connections>
                                                                         <action selector="favoriteButtonTapped:" destination="YB3-Ss-9ni" eventType="touchUpInside" id="QKh-kA-Z9K"/>
                                                                     </connections>
@@ -296,7 +295,7 @@
                                             <outlet property="beerImage" destination="JUA-Nn-bDt" id="mSx-hB-IEA"/>
                                             <outlet property="beerTitleLbl" destination="gdQ-OV-ei1" id="N67-jw-9gD"/>
                                             <outlet property="beerView" destination="Bza-os-BDp" id="N4h-4y-vKy"/>
-                                            <outlet property="favoritButton" destination="voW-ub-GHr" id="VWu-Vm-EgS"/>
+                                            <outlet property="favoriteButton" destination="voW-ub-GHr" id="VWu-Vm-EgS"/>
                                             <outlet property="ratingLbl" destination="NCJ-K5-qtu" id="yeE-S2-nk6"/>
                                             <segue destination="HTx-0y-1rm" kind="show" identifier="Beer Detail" destinationCreationSelector="showBeerDetails:" id="CK1-Ul-Sq6"/>
                                         </connections>
@@ -569,7 +568,6 @@
     </scenes>
     <resources>
         <image name="beersample" width="768" height="768"/>
-        <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -15,7 +15,7 @@ class BeerTableViewCell: UITableViewCell {
     @IBOutlet var beerTitleLbl: UILabel!
     @IBOutlet var abvLbl: UILabel!
     @IBOutlet var ratingLbl: UILabel!
-    @IBOutlet var favoritButton: UIButton!
+    @IBOutlet var favoriteButton: UIButton!
     @IBOutlet var addedOnLbl: UILabel!
     
     override func awakeFromNib() {
@@ -37,8 +37,8 @@ class BeerTableViewCell: UITableViewCell {
         dateFormatter.dateStyle = .short
         addedOnLbl.text = "Added on: \(dateFormatter.string(from: beer.dateAdded))"
         
-        //TODO dit werkt nog niet
-        favoritButton.imageView?.image = beer.isFavorit ? UIImage(named: "star.fill") : UIImage(named: "star")
+        favoriteButton.setBackgroundImage(beer.isFavorit ? UIImage(systemName: "star.fill") : UIImage(systemName: "star"), for: .normal)
+
     }
 
 }

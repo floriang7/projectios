@@ -70,12 +70,9 @@ struct BeerDetailView: View {
                 UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
                 return
             }
-            print(rating)
             beers[selectedBeerIndex].rating = rating
             
-            //TODO opslaan in files
             BeerController.saveToFile(beers: beers)
-            print("beers saved")
         }))
         
         UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
