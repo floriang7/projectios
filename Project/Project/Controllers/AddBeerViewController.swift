@@ -17,32 +17,42 @@ class AddBeerViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet var ratingTextField: UITextField!
     @IBOutlet var addButton: UIButton!
     @IBOutlet var beerImageView: UIImageView!
+    @IBOutlet var cameraButton: UIButton!
+    @IBOutlet var defaultImgButton: UIButton!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         updateUI()
+        
+        //<SOURCE https://stackoverflow.com/questions/37229132/swift-how-to-resign-first-responder-on-all-uitextfield/43865849>
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        view.addGestureRecognizer(tapGesture)
+        //</SOURCE>
     }
     
 
     //ACTIONS
     @IBAction func addBeer(_ sender: UIButton) {
         guard let name = nameTextField.text, let abv: Double = Double(abvTextField.text!), let rating = Int(ratingTextField.text!), let beerImage: UIImage = beerImageView.image else {
-            showAlert(titleAlert: "Error", message: "Couldn't add the beer, check your input!", styleAlert: .alert, titleAction: "Ok", styleAction: .default, sender: sender)
+            showAlert(titleAlert: "Error", message: "Couldn't add the beer!", styleAlert: .alert, titleAction: "Ok", styleAction: .default, sender: sender)
             return
         }
         //TODO beerimage aan constructor toevoegen in Beer struct
-        let newBeer = Beer(name: name, abv: abv, rating: rating, isFavorit: false)
+        let newBeer = Beer(name: name, abv: abv, rating: rating, isFavorit: false, image: beerImage.pngData()!)
         
         beers.append(newBeer)
+        print(beers)
         BeerController.saveToFile(beers: beers)
         
         resetTextfFields()
+        resetImgView()
+        //hideImageView()
         
-        showAlert(titleAlert: "Succes", message: "\(newBeer.name) added", styleAlert: .actionSheet, titleAction: "Ok", styleAction: .default, sender: sender)
+        showAlert(titleAlert: "Succes", message: "\(newBeer.name) has been added", styleAlert: .actionSheet, titleAction: "Ok", styleAction: .default, sender: sender)
         
-        //TODO Segue too HomeVC
+        //TODO Segue too HomeVC (extra)
     }
     
     @IBAction func cameraButtonTapped(_ sender: UIButton) {
@@ -72,7 +82,6 @@ class AddBeerViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     @IBAction func defaultImageButtonTapped(_ sender: UIButton) {
         beerImageView.image = UIImage(named: "beersample")
-        beerImageView.isHidden = false
     }
     
     
@@ -87,13 +96,16 @@ class AddBeerViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     fileprivate func updateUI() {
         addButton.layer.cornerRadius = 10
+        cameraButton.layer.cornerRadius = 10
+        defaultImgButton.layer.cornerRadius = 10
         nameTextField.delegate = self
         abvTextField.delegate = self
         ratingTextField.delegate = self
         
-        if beerImageView.image == nil {
-            beerImageView.isHidden = true
-        }
+        updateImgViewUI()
+        /*if beerImageView.image == nil {
+            hideImageView()
+        }*/
     }
     
     
@@ -113,7 +125,29 @@ class AddBeerViewController: UIViewController, UIImagePickerControllerDelegate, 
         abvTextField.text = ""
         ratingTextField.text = ""
     }
-
+    
+    func hideImageView() {
+        beerImageView.isHidden = true
+    }
+    
+    func updateImgViewUI() {
+        beerImageView.layer.borderColor = UIColor(red: 240/255, green: 140/255, blue: 80/255, alpha: 1.0).cgColor
+        beerImageView.layer.masksToBounds = true
+        beerImageView.contentMode = .scaleToFill
+        beerImageView.layer.borderWidth = 4
+        beerImageView.layer.cornerRadius = 10
+    }
+    
+    func resetImgView() {
+        beerImageView.image = nil
+    }
+    
+    
+    //<SOURCE https://stackoverflow.com/questions/37229132/swift-how-to-resign-first-responder-on-all-uitextfield/43865849>
+    @objc func hideKeyboard() {
+        view.endEditing(true)
+    }
+    //</SOURCE>
 }
 
 extension AddBeerViewController: UITextFieldDelegate {

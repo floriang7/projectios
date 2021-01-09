@@ -66,7 +66,7 @@ class BeersViewController: UIViewController, UISearchBarDelegate {
         let selectedIndex = beers.firstIndex { (beer: Beer) -> Bool in
             return beer.name.lowercased() == selectedBeer?.name.lowercased()
         }
-        print(selectedIndex!)
+
         let hostingController = UIHostingController(coder: coder, rootView: BeerDetailView(beers: self.beers, selectedBeerIndex: selectedIndex!))
         return hostingController
     }
@@ -132,17 +132,9 @@ extension BeersViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-    /*func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let beer = filteredData[indexPath.row]
-        selecectedBeer = beer
-        print("selected beer: \(selecectedBeer?.name ?? "nil")")        
-        
-    }*/
-    
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         let beer = filteredData[indexPath.row]
         selectedBeer = beer
-        print("selected beer: \(selectedBeer?.name ?? "")")
         return indexPath
     }
     
@@ -157,6 +149,7 @@ extension BeersViewController: UITableViewDataSource, UITableViewDelegate {
      IndexPath) {
         if editingStyle == .delete {
             beers.remove(at: indexPath.row)
+            filteredData.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: . automatic)
             BeerController.saveToFile(beers: beers)
         }

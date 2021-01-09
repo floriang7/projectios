@@ -17,17 +17,35 @@ struct Beer: Codable {
     var rating: Int
     var isFavorit: Bool
     var dateAdded: Date
-    //var image: UIImage
+    var image: Data
     
+    enum CodingKeys: String, CodingKey {
+        case name
+        case abv
+        case rating
+        case isFavorit
+        case dateAdded
+        case image
+    }
   
-  
-    init(name: String, abv: Double, rating: Int, isFavorit: Bool) {
+    init(name: String, abv: Double, rating: Int, isFavorit: Bool, image: Data) {
         self.name = name
         self.abv = abv
         self.rating = rating
         self.isFavorit = isFavorit
         self.dateAdded = Date()
+        self.image = image
     }
+    
+    /*init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.name = try container.decode(String.self, forKey: CodingKeys.name)
+        self.abv = try container.decode(Double.self, forKey: CodingKeys.abv)
+        self.rating = try container.decode(Int.self, forKey: CodingKeys.rating)
+        self.isFavorit = try container.decode(Bool.self, forKey: CodingKeys.isFavorit)
+        self.dateAdded = try container.decode(Date.self, forKey: CodingKeys.isFavorit)
+        self.image = try container.decode(.self, forKey: CodingKeys.image)
+    }*/
     
     /*static func saveToFile(beers: [Beer]) {
         let propertyListEncoder = PropertyListEncoder()

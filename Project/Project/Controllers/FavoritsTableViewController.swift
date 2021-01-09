@@ -1,20 +1,32 @@
 //
-//  RatingTableViewController.swift
+//  FavoritsTableViewController.swift
 //  Project
 //
-//  Created by Florian Goossens on 19/11/2020.
+//  Created by Florian Goossens on 08/01/2021.
 //
 
 import UIKit
 
-class RatingTableViewController: UITableViewController {
+class FavoritsTableViewController: UITableViewController {
 
-    var beers: [Beer] = []//BeerController.loadFromFile()
+    var beers: [Beer] = [] //BeerController.loadFromFile()
+    var favorits: [Beer] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print(beers)
+        favorits = beers.filter {
+            $0.isFavorit == true
+        }
+        print("FAVORITS")
+        print(favorits)
+        tableView.reloadData()
+        
+    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -22,7 +34,7 @@ class RatingTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return beers.count
+            return favorits.count
         } else {
             return 0
         }
@@ -30,14 +42,47 @@ class RatingTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let beer = beers[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Rating", for: indexPath)
+        let beer = favorits[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Favorit", for: indexPath)
         cell.textLabel?.text = "\(beer.name)"
         cell.detailTextLabel?.text = "Rating: \(beer.rating)"
-        
+
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView,
+     editingStyleForRowAt indexPath: IndexPath) ->
+     UITableViewCell.EditingStyle {
+     return .delete
+    }
+    
+    override func tableView(_ tableView: UITableView, commit
+    editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath:
+     IndexPath) {
+        if editingStyle == .delete {
+            let beer = favorits[indexPath.row]
+            favorits.remove(at: indexPath.row)
+            
+            let indexOfBeerInBeers: Int? = beers.firstIndex {
+                $0.name == beer.name
+            }
+            beers[indexOfBeerInBeers!].isFavorit = false
+            
+            tableView.deleteRows(at: [indexPath], with: . automatic)
+            
+            BeerController.saveToFile(beers: beers)
+        }
+    }
 
+    /*
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+
+        // Configure the cell...
+
+        return cell
+    }
+    */
 
     /*
     // Override to support conditional editing of the table view.

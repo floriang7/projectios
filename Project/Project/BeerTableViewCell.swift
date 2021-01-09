@@ -28,7 +28,7 @@ class BeerTableViewCell: UITableViewCell {
     
     
     func updateView(with beer:Beer) {
-        beerImage.image = UIImage(named: "beersample")
+        beerImage.image = UIImage(data: beer.image)
         beerTitleLbl.text = beer.name
         abvLbl.text = "Abv (%): \(beer.abv)"
         ratingLbl.text = "Rating: \(beer.rating)"

@@ -20,11 +20,13 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //TODO empty check?
-        beers = BeerController.loadFromFile()
-        
         updateUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        beers = BeerController.loadFromFile()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -38,6 +40,9 @@ class HomeViewController: UIViewController {
             nextViewController.beers = beers
         case "Ratings":
             let nextViewController = segue.destination as! RatingTableViewController
+            nextViewController.beers = beers
+        case "Favorits":
+            let nextViewController = segue.destination as! FavoritsTableViewController
             nextViewController.beers = beers
         default: return
         }
