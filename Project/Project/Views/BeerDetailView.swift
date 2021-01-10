@@ -11,7 +11,6 @@ import SafariServices
 struct BeerDetailView: View {
     @State var beers: [Beer] = []
     var selectedBeerIndex: Int!
-    //@State var beer: Beer!
     let dateFormatter = DateFormatter()
       
     var body: some View {
@@ -23,7 +22,7 @@ struct BeerDetailView: View {
                 HStack {
                     
                     VStack {
-                        Image("beersample").resizable()
+                        Image(uiImage: UIImage(data: beers[selectedBeerIndex].image)!).resizable()
                             .frame(width: 162.0, height: 162.0)
                     }
                     

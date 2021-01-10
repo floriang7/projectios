@@ -60,7 +60,6 @@ class HomeViewController: UIViewController {
     
     //FUNCTIONS
     fileprivate func updateUI() {
-        //TODO zet dit in een subclass van UIButton
         beersButton.layer.cornerRadius = 10
         beersButton.clipsToBounds = true
         addBeersButton.layer.cornerRadius = 10

@@ -42,3 +42,5 @@ class BeerTableViewCell: UITableViewCell {
     }
 
 }
+
+

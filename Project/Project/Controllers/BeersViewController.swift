@@ -80,7 +80,6 @@ class BeersViewController: UIViewController, UISearchBarDelegate {
         beersTableView.dataSource = self
         beersTableView.separatorStyle = .none
         beersTableView.cellLayoutMarginsFollowReadableWidth = true
-        //beersTableView.showsVerticalScrollIndicator = false
     }
     
     fileprivate func initializeSearchBar() {
