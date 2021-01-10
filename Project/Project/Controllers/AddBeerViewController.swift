@@ -39,20 +39,16 @@ class AddBeerViewController: UIViewController, UIImagePickerControllerDelegate, 
             showAlert(titleAlert: "Error", message: "Couldn't add the beer!", styleAlert: .alert, titleAction: "Ok", styleAction: .default, sender: sender)
             return
         }
-        //TODO beerimage aan constructor toevoegen in Beer struct
+
         let newBeer = Beer(name: name, abv: abv, rating: rating, isFavorit: false, image: beerImage.pngData()!)
         
         beers.append(newBeer)
-        print(beers)
         BeerController.saveToFile(beers: beers)
         
         resetTextfFields()
         resetImgView()
-        //hideImageView()
         
         showAlert(titleAlert: "Succes", message: "\(newBeer.name) has been added", styleAlert: .actionSheet, titleAction: "Ok", styleAction: .default, sender: sender)
-        
-        //TODO Segue too HomeVC (extra)
     }
     
     @IBAction func cameraButtonTapped(_ sender: UIButton) {
@@ -66,16 +62,13 @@ class AddBeerViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             let cameraAction = UIAlertAction(title: "Camera", style: .default) { action in
-                print("camera selected")
                 imagePicker.sourceType = .camera
                 self.present(imagePicker, animated: true, completion: nil)
             }
             alertController.addAction(cameraAction)
         } else {
-            print("camera not available")
+            return
         }
-          
-        //alertController.popoverPresentationController?.sourceView = sender
         
         present(alertController, animated: true, completion: nil)
     }
@@ -103,9 +96,6 @@ class AddBeerViewController: UIViewController, UIImagePickerControllerDelegate, 
         ratingTextField.delegate = self
         
         updateImgViewUI()
-        /*if beerImageView.image == nil {
-            hideImageView()
-        }*/
     }
     
     
@@ -124,10 +114,6 @@ class AddBeerViewController: UIViewController, UIImagePickerControllerDelegate, 
         nameTextField.text = ""
         abvTextField.text = ""
         ratingTextField.text = ""
-    }
-    
-    func hideImageView() {
-        beerImageView.isHidden = true
     }
     
     func updateImgViewUI() {

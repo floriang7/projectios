@@ -14,6 +14,7 @@ class BeersViewController: UIViewController, UISearchBarDelegate {
     var filteredData: [Beer] = []
     var selectedBeer: Beer? = nil
     
+    //OUTLETS
     @IBOutlet var beersTableView: UITableView!
     @IBOutlet var sortAllButton: UIButton!
     @IBOutlet var sortByAbvButton: UIButton!
@@ -104,7 +105,7 @@ class BeersViewController: UIViewController, UISearchBarDelegate {
     //</SOURCE>
     
     
-}// end of BeersViewController
+}// End of BeersViewController
 
 
 // EXTENSIONS
