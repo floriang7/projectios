@@ -32,10 +32,29 @@ class AddBeerViewController: UIViewController, UIImagePickerControllerDelegate, 
         //</SOURCE>
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+       super.viewWillAppear(animated)
+       
+       AppUtility.lockOrientation(.portrait) //<SOURCE https://stackoverflow.com/questions/28938660/how-to-lock-orientation-of-one-view-controller-to-portrait-mode-only-in-swift>
+        //</SOURCE>
+   }
+
+   override func viewWillDisappear(_ animated: Bool) {
+       super.viewWillDisappear(animated)
+       
+       AppUtility.lockOrientation(.all) //<SOURCE https://stackoverflow.com/questions/28938660/how-to-lock-orientation-of-one-view-controller-to-portrait-mode-only-in-swift>
+    //</SOURCE>
+   }
+    
 
     //ACTIONS
     @IBAction func addBeer(_ sender: UIButton) {
         guard let name = nameTextField.text, let abv: Double = Double(abvTextField.text!), let rating = Int(ratingTextField.text!), let beerImage: UIImage = beerImageView.image else {
+            showAlert(titleAlert: "Error", message: "Couldn't add the beer!", styleAlert: .alert, titleAction: "Ok", styleAction: .default, sender: sender)
+            return
+        }
+        
+        if(abv < 0.0 || rating < 0) {
             showAlert(titleAlert: "Error", message: "Couldn't add the beer!", styleAlert: .alert, titleAction: "Ok", styleAction: .default, sender: sender)
             return
         }
