@@ -69,6 +69,12 @@ struct BeerDetailView: View {
                 UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
                 return
             }
+            
+            if(rating < 0) {
+                UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
+                return
+            }
+            
             beers[selectedBeerIndex].rating = rating
             
             BeerController.saveToFile(beers: beers)
